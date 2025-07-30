@@ -25,6 +25,7 @@
 #include <malloc.h>
 #include <omp.h>
 #include <string.h>
+#include <functional>
 
 #include <thread>
 #include <vector>

@@ -1,6 +1,6 @@
 
 ROOT_DIR= $(shell pwd)
-TARGETS= bin/preprocess bin/pagerank bin/pagerank_delta bin/pagerank_gg 
+TARGETS= bin/preprocess bin/pagerank bin/pagerank_delta bin/pagerank_gg bin/convert2bin
 
 CXX?= g++
 CXXFLAGS?= -O3 -Wall -std=c++11 -g -fopenmp -I$(ROOT_DIR)
@@ -9,6 +9,9 @@ HEADERS= $(shell find . -name '*.hpp')
 all: $(TARGETS)
 
 bin/preprocess: tools/preprocess.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -o $@ $< $(SYSLIBS)
+
+bin/convert2bin: tools/convert.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -o $@ $< $(SYSLIBS)
 
 bin/pagerank: examples/pagerank.cpp $(HEADERS)
